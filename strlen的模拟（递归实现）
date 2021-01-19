@@ -1,0 +1,39 @@
+/*
+strlen的含义是：求字符串中有效字符的长度，不包括\0。
+*/
+ 
+ 
+/*
+循环实现：
+1. 给一个计数，用来统计有效字符的个数
+2. 遍历字符串，只要没有遇到\0, 遇到一个字符给计数加1，直到遇到\0
+*/
+ 
+ 
+ int my_strlen(char* str)
+ {
+ 	int count = 0;
+ 	while('\0' != *str)
+ 	{
+ 		count++;
+ 		str++;
+ 	}
+ 	return count;
+ }
+ 
+ 
+ 
+ 
+/*
+递归实现：
+                0  *str == '\0' 
+my_strlen(str)
+                my_strlen(p+1) + 1  子问题划分
+*/
+int my_strlen(char *str)
+{
+	if('\0' == *str)
+		return 0;
+	else
+		return 1+my_strlen(1+str);
+}
