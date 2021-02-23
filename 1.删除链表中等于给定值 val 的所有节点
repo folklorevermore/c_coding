@@ -1,0 +1,42 @@
+/*
+解题思路：从头节点开始进行元素删除，每删除一个元素，需要重新链接节点
+*/
+struct ListNode* removeElements(struct ListNode* head, int val) {
+    if(head == NULL)
+        return NULL;
+    
+    struct ListNode* cur = head;
+    struct ListNode* prev = NULL;
+    
+    while(cur)
+    {
+        //如果当前节点是需要删除的节点
+        if(cur->val == val)
+        {
+            //首先保存下一个节点
+            struct ListNode* next = cur->next;
+            //如果删除的为头节点，更新头节点
+            //否则让当前节点的前趋节点链接next节点
+            if(prev == NULL)
+            {
+                head = cur->next;
+            }
+            else
+            {
+                prev->next = cur->next;  
+            }
+            //释放当前节点，让cur指向next
+            free(cur);
+            cur = next;
+        }
+        else
+        {
+            //如果cur不是需要删除的节点，则更新prev,cur
+            prev = cur;
+            cur = cur->next;
+        }
+    }
+    
+    return head;
+}
+ 
