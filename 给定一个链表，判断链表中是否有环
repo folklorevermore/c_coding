@@ -1,0 +1,20 @@
+/*
+解题思路：
+定义快慢指针fast,slow, 如果链表确实有环，fast指针一定会在环内追上slow指针。
+*/
+typedef struct ListNode Node;
+bool hasCycle(struct ListNode *head) {
+   Node* slow = head;
+   Node* fast = head;
+ 
+  while(fast && fast->next)
+  {
+    slow = slow->next;
+    fast = fast->next->next;
+ 
+    if(slow == fast)
+      return true;
+  }
+ 
+  return false;
+}
