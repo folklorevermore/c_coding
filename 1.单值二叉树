@@ -1,0 +1,20 @@
+/*
+解题思路：
+遍历二叉树，并且每一个节点值都和根节点的值进行比对，如果不等于根节点的值，则不是单值树。
+*/
+bool _isUnivalTree(struct TreeNode* root, int val){
+    if(root == NULL)
+        return true;
+    if(root->val != val)
+        return false;
+    return _isUnivalTree(root->left, val)
+            && _isUnivalTree(root->right, val);
+}
+ 
+bool isUnivalTree(struct TreeNode* root){
+    if(root == NULL)
+        return true;
+    int val = root->val;
+    return _isUnivalTree(root, val);
+}
+ 
