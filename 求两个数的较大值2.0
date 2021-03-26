@@ -1,0 +1,29 @@
+#include<stdio.h>
+
+ 
+
+int maximum(int a,int b)
+
+{
+
+return((a > b) ? a : b );
+
+}
+
+ 
+
+void main()
+
+{ 
+
+int x, y,max;
+
+printf("请输入两个数：");
+
+scanf("%d %d", &x, &y);
+
+max = maximum(x, y);
+
+printf("较大值 = %d", max);
+
+}
